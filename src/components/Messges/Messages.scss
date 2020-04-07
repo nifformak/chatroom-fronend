@@ -1,0 +1,35 @@
+.Messages{
+    flex-grow: 1;
+    overflow: hidden;
+    height: 100vh;
+    min-height: 100%;
+    overflow-y:  scroll;
+    flex-direction: column;
+  position: relative;
+
+    &__header{
+      background-color: white;
+      top: 0;
+      position: sticky;
+
+      z-index: 10;
+    }
+    &__content{
+      min-height: 90%
+    }
+    &__input {
+      width: 100%;
+      box-sizing: border-box;
+      background-color: white;
+      bottom: 0;
+      position: sticky;
+      z-index: 100;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      padding: 20px 15px;
+      &-button {
+        padding: 0 20px;
+      }
+    }
+  }

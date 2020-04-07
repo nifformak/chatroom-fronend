@@ -1,0 +1,12 @@
+.Dialogs{
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  overflow-y: scroll;
+  &__adder{
+    position: sticky;
+    top: 0;
+    background-color: white;
+    z-index: 10;
+  }
+}

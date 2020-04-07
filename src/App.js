@@ -1,26 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from 'react'
+import { connect } from 'react-redux'
+import { actionsUser } from './redux/actions'
+import { Switch, Route } from 'react-router-dom'
+import Chat from './page/Chat/Chat'
 
-function App() {
+function App({ fetchUser }) {
+  useEffect(() => {
+    fetchUser()
+  })
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Switch>
+      <Route exec path={'/dialog/:id'} component={Chat} />
+      <Route exec path={'/'} component={Chat} />
+    </Switch>
+  )
 }
 
-export default App;
+const mapDispatchToProps = (dispatch) => ({
+  fetchUser: () => dispatch(actionsUser.fetchUser()),
+})
+
+export default connect(null, mapDispatchToProps)(App)
