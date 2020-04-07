@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import classNames from 'classnames'
-import { useParams, useHistory } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 import './Chat.scss'

@@ -14,7 +14,6 @@ const actions = {
     }),
     fetchMessages: (id) => async (dispatch) => {
         const {data} = await messageApi.fetchMessages(id);
-        console.log(data, 'messages')
         if(data.messages){
         dispatch(actions.setMessages(data.messages))
         dispatch(actions.setUsers(data.users))
@@ -24,7 +23,7 @@ const actions = {
         }
     },
     createMessage: (text, dialogId) => async (dispatch) => {
-        const {data} = await messageApi.createMessage(text, dialogId);
+        await messageApi.createMessage(text, dialogId);
         socket.emit('MESSAGE:SEND', dialogId, 'dialogs');
         socket.emit('MESSAGE:SEND', dialogId, 'messages');
         dispatch(actions.fetchMessages(dialogId));

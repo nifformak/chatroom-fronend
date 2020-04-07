@@ -42,7 +42,7 @@ const DialogList = ({
     socket.emit('DIALOGS:JOIN', id, 'messages')
     fetchDialogs()
     fetchMessages(id)
-  }, [fetchDialogs, id, setActiveDialog])
+  }, [fetchDialogs, fetchMessages, id, setActiveDialog])
   useEffect(() => {
     if (id !== activeDialogId && id !== null && activeDialogId !== null) {
       history.push(`/dialog/${activeDialogId}`)

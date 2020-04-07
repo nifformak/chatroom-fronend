@@ -10,7 +10,7 @@ const actions = {
   }),
   fetchDialogs: () => async (dispatch) => {
     const { data } = await dialogApi.fetchDialogs()
-    console.log(data, 'dialogs');
+    console.log(data, 'dialogs')
     data.dialogs.forEach((item) =>
       socket.emit('DIALOGS:JOIN', item._id, 'dialogs')
     )
@@ -37,9 +37,10 @@ const actions = {
   leaveDialog: (dialogId) => async (dispatch) => {
     await dialogApi.leaveDialog(dialogId)
     await dispatch(actions.fetchDialogs())
-    await dispatch(actions.setActiveDialog(0))
+    await dispatch(actionsMessage.fetchMessages(dialogId))
     socket.emit('MESSAGE:SEND', dialogId, 'dialogs')
     socket.emit('MESSAGE:SEND', dialogId, 'messages')
+    await dispatch(actions.setActiveDialog(0))
   },
 }
 

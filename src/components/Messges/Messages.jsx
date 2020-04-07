@@ -1,7 +1,7 @@
 import React from 'react'
 import Message from '../Message/Message'
 import './Messages.scss'
-import { Input, Button, Form } from 'antd'
+import { Input, Button } from 'antd'
 
 const Messages = ({
   items,
@@ -11,14 +11,14 @@ const Messages = ({
   userId,
   typingObj,
   users,
-                      leaveDialog
+  leaveDialog,
 }) => {
   return (
     <div className={'Messages'}>
       <div className={'Messages__header'}>
         Участники: <>{users.map((user) => user.login + ' ')}</>
       </div>
-        <Button onClick={leaveDialog}>Выйти из диалога</Button>
+      <Button onClick={leaveDialog}>Выйти из диалога</Button>
       <div className={'Messages__content'}>
         {items.length ? (
           <>
